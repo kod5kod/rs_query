@@ -46,10 +46,11 @@ class RS_Query:
 	#	Status:
 	print(RS_Query_instance)
     """
-	import time,math
-	import psycopg2
+
     def __init__(self, redshift_conf, s3_conf = False):
         # Initializing the configs:
+		import time,math
+		import psycopg2
         self.redshift_conf = redshift_conf
         self.s3_conf = s3_conf
         self.host = redshift_conf['host']
