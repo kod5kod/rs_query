@@ -15,6 +15,14 @@ import psycopg2
 Inputs:
 RS_Query(redshift_conf, s3_conf = False)
 redshift_conf = a dictionary with the following keys: host, dbname, port,user, password. 
+Example of redshit_conf:
+redshift_conf = {
+'host' : 'your_host_address.redshift.amazonaws.com',
+'dbname' : 'your_dbname',
+'port' : '1234',
+'user' : 'user_name',
+'password' : 'user_password'
+}
 
 Outpot:
 See methods. 
