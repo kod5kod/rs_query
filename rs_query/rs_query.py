@@ -143,14 +143,15 @@ class RS_Query:
         print "Redshift unload query succesful. Quering took {} minutes and {} seconds \n".format(minutes,seconds)
 		
 		
-	def commit(self)
+	def commit(self):
 		# Make the changes to the database persistent
 		conn.commit()
 		print "commiting changes to the database (persist)"
 		
 		
-	def rollback(self)
-		# conn.rollback()
+	def rollback(self):
+		# Rolling back to last commit
+		conn.rollback()
 		print "Rolling back to last commit"
 	
 	
