@@ -141,7 +141,19 @@ class RS_Query:
         minutes = int(QTime)
         seconds = int(round(60*((QTime -math.floor(QTime)))))
         print "Redshift unload query succesful. Quering took {} minutes and {} seconds \n".format(minutes,seconds)
-
+		
+		
+	def commit(self)
+		# Make the changes to the database persistent
+		conn.commit()
+		print "commiting changes to the database (persist)"
+		
+		
+	def rollback(self)
+		# conn.rollback()
+		print "Rolling back to last commit"
+	
+	
     def disconnect(self):
         #self.cursor.close()
         self.conn.close()
