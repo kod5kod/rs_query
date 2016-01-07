@@ -9,7 +9,7 @@ https://github.com/kod5kod
 The "rs_query" module is a simple "psycopg2" wrapper for quering and interacting with Amazon's Redshift.
 
 Dependencies:
-import time,math
+import time,math,re
 import psycopg2
 
 Inputs:
@@ -38,7 +38,7 @@ class RS_Query:
     """This wrapper is based on psycopg2.
     The "rs_query" module is a simple "psycopg2" wrapper for quering and interacting with Amazon's Redshift.
 	#	Dependencies:
-	import time,math
+	import time,math,re
 	import psycopg2
 	#	Inputs:
 	RS_Query(redshift_conf, s3_conf = False)
@@ -121,6 +121,7 @@ class RS_Query:
 
 
     def send_unload(self,unload_query,s3_path='',auto = False):
+        import re
         #  Input: a non-unloadable query (string) Output: an unloadable-ready query with unload command appended and "'" escaped (string)
         localtime = time.asctime( time.localtime(time.time()) )
         if auto and s3_path:
@@ -143,16 +144,16 @@ class RS_Query:
         print "Redshift unload query succesful. Quering took {} minutes and {} seconds \n".format(minutes,seconds)
 		
 		
-	def commit(self):
-		# Make the changes to the database persistent
+    def commit(self):
+        # Make the changes to the database persistent
 		conn.commit()
-		print "commiting changes to the database (persist)"
+        print "commiting changes to the database (persist)"
 		
 		
-	def rollback(self):
-		# Rolling back to last commit
+    def rollback(self):
+        # Rolling back to last commit
 		conn.rollback()
-		print "Rolling back to last commit"
+        print "Rolling back to last commit"
 	
 	
     def disconnect(self):
