@@ -146,13 +146,13 @@ class RS_Query:
 		
     def commit(self):
         # Make the changes to the database persistent
-        conn.commit()
+        self.conn.commit()
         print "commiting changes to the database (persist)"
 		
 		
     def rollback(self):
         # Rolling back to last commit
-        conn.rollback()
+        self.conn.rollback()
         print "Rolling back to last commit"
 	
 	
